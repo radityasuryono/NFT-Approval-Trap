@@ -6,9 +6,8 @@ import {ITrap} from "drosera-contracts/interfaces/ITrap.sol";
 contract NFTApprovalTrap is ITrap {
     address private owner;
 
-    constructor(address _owner) {
-        require(_owner != address(0), "Invalid owner");
-        owner = _owner;
+    constructor() {
+        owner = msg.sender;
     }
 
     function collect() external view override returns (bytes memory) {
@@ -43,3 +42,4 @@ contract NFTApprovalTrap is ITrap {
         return (false, "");
     }
 }
+
